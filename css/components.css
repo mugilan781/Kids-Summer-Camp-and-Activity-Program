@@ -270,6 +270,8 @@ table.data-table{width:100%;border-collapse:collapse;min-width:640px}
 .status-pending{background:var(--sun-soft);color:#B8860B}
 [data-theme="dark"] .status-pending{color:var(--sun)}
 .status-overdue{background:rgba(229,72,77,.12);color:#E5484D}
+.inline-ico{width:15px;height:15px;display:inline-block;vertical-align:-2px;margin-inline-end:2px;flex:none}
+.child-tags span .inline-ico{width:13px;height:13px;margin-inline-end:4px}
 .pagination{display:flex;gap:8px;justify-content:center;margin-top:36px}
 .pagination a,.pagination span,.pagination button{
   min-width:44px;height:44px;display:grid;place-items:center;border-radius:12px;
