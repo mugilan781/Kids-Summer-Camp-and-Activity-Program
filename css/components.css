@@ -19,9 +19,9 @@
 }
 .site-header.scrolled{border-bottom-color:var(--line);box-shadow:var(--shadow-sm)}
 .nav-wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:var(--header-h)}
-.logo{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:1.42rem;color:var(--ink);flex:none}
+.logo{display:inline-flex;align-items:center;font-family:var(--font-display);font-weight:700;font-size:1.42rem;color:var(--ink);flex:none}
 .logo-img{
-  width:42px;height:42px;flex:none;object-fit:cover;
+  width:42px;height:42px;flex:none;object-fit:cover;margin-inline-end:10px;
   filter:drop-shadow(0 8px 14px rgba(14,122,74,.45));
   transform:rotate(-6deg);transition:transform .4s var(--ease-spring);
 }
