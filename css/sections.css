@@ -525,6 +525,7 @@
   font-weight:800;font-size:.72rem;padding:6px 13px;border-radius:999px;letter-spacing:.8px;text-transform:uppercase;
 }
 .price-name{font-size:1.18rem;margin-bottom:6px}
+.price-card.featured .price-name{color:#fff}
 .price-desc{color:var(--muted);font-size:.9rem;margin-bottom:18px}
 .price-card.featured .price-desc{color:rgba(255,255,255,.82)}
 .price-num{font-family:var(--font-display);font-weight:700;font-size:2.7rem;line-height:1;color:var(--brand-strong)}
