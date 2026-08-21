@@ -282,7 +282,7 @@ table.data-table{width:100%;border-collapse:collapse;min-width:640px}
 .breadcrumbs a:hover{color:var(--brand)}
 .breadcrumbs .sep{opacity:.5}
 .breadcrumbs [aria-current]{color:var(--brand)}
-.avatar{border-radius:50%;object-fit:cover;flex:none}
+.avatar{border-radius:50%;aspect-ratio:1;height:auto;object-fit:cover;flex:none}
 .avatar-ring{padding:4px;border-radius:50%;background:conic-gradient(var(--accent),var(--sun),var(--brand),var(--sky),var(--accent))}
 .tag-row{display:flex;gap:9px;flex-wrap:wrap}
 .progress-track{height:10px;border-radius:99px;background:var(--surface-2);overflow:hidden}

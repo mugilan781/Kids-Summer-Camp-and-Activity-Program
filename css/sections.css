@@ -65,6 +65,7 @@
 .camp-card{
   position:relative;border-radius:var(--radius-lg);overflow:hidden;background:var(--surface);
   border:1px solid var(--line);box-shadow:var(--shadow-sm);
+  display:flex;flex-direction:column;
   transition:transform .4s var(--ease-out),box-shadow .4s ease;
 }
 .camp-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
@@ -84,10 +85,10 @@
 }
 .camp-fav:hover,.camp-fav.active{color:var(--berry);transform:scale(1.15)}
 .camp-fav svg{width:18px;height:18px}
-.camp-card-body{padding:22px 24px 26px}
+.camp-card-body{padding:22px 24px 26px;display:flex;flex-direction:column;flex:1}
 .camp-card-body h3{font-size:1.28rem;margin-bottom:8px}
 .camp-card-body h3 a:hover{color:var(--brand)}
-.camp-card-body>p{color:var(--muted);font-size:.93rem;margin-bottom:16px}
+.camp-card-body>p{color:var(--muted);font-size:.93rem;margin-bottom:16px;flex:1}
 .camp-tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}
 .camp-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:16px;border-top:1px dashed var(--line-strong)}
 .camp-price strong{font-family:var(--font-display);font-size:1.3rem;color:var(--brand)}
