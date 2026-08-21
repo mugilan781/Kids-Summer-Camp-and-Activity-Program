@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard — CampQuest Staff Portal</title>
+<meta name="description" content="CampQuest staff portal: manage camper enrollments, instructor rosters, weekly schedules, finances and announcements.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230E7A4A'/%3E%3Cpath d='M12 46 26 24l9 13 6-8 11 17z' fill='%23FFC93C'/%3E%3Ccircle cx='45' cy='18' r='6' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/sections.css">
+<link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+<div class="page-transition active"><div class="pt-logo"><span class="pt-ring"></span></div></div>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<div class="dash-shell">
+
+<aside class="dash-sidebar" aria-label="Admin navigation">
+  <div class="dash-brand">
+    <a class="logo" href="index.html"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 19 6-10 4 6 2.5-3.5L21 19Z"/><circle cx="17.5" cy="6.5" r="2"/></svg></span>Camp<em>Quest</em></a>
+    <button class="icon-btn dash-close" data-drawer-close aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+  </div>
+  <div class="dash-user">
+    <img class="avatar" src="https://api.dicebear.com/7.x/adventurer/svg?seed=Dan%20Reyes&backgroundColor=d1d4f9" alt="Director Dan's avatar" width="48" height="48" loading="lazy">
+    <div><strong>Dan Reyes</strong><span>Camp Director · Admin</span></div>
+  </div>
+  <nav class="dash-nav">
+    <p class="dash-nav-label">Operations</p>
+    <button type="button" class="active" data-view="overview" data-title="Command Center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Overview</button>
+    <button type="button" data-view="campers" data-title="Camper Management"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Campers<span class="nav-count">8</span></button>
+    <button type="button" data-view="staff" data-title="Instructor Roster"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Instructors</button>
+    <button type="button" data-view="schedule" data-title="Master Schedule"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Schedule</button>
+    <p class="dash-nav-label">Business</p>
+    <button type="button" data-view="finances" data-title="Finances"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>Finances</button>
+    <button type="button" data-view="announcements" data-title="Announcement Composer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 22 2 13 21l-2-8-8-2Z"/></svg>Announcements</button>
+    <button type="button" data-view="reports" data-title="Reports &amp; Insights"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M9 15h6M9 11h3"/></svg>Reports</button>
+  </nav>
+  <div class="dash-upgrade">
+    <strong>🏕️ Week 3 Live</strong>
+    <p>142 campers on site today. All zones staffed and green.</p>
+    <a href="#" class="btn btn-accent btn-sm btn-block">Open Safety Board</a>
+  </div>
+</aside>
+
+<div class="drawer-overlay"></div>
+
+<main id="main" class="dash-main">
+  <div class="dash-topbar">
+    <div>
+      <h1 data-view-title>Command Center</h1>
+      <p>Wednesday, July 29 · Week 3 · Day 3 of 5 · 28°C and sunny ☀️</p>
+    </div>
+    <div class="dash-actions">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <label class="sr-only" for="camperSearch">Search campers</label>
+        <input id="camperSearch" type="search" placeholder="Search campers by name or camp…">
+      </div>
+      <button class="icon-btn" data-theme-toggle aria-label="Toggle dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+      </button>
+      <button class="icon-btn" data-rtl-toggle aria-label="Toggle RTL mode">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg>
+      </button>
+      <button class="icon-btn dash-burger" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
+    </div>
+  </div>
+
+  <!-- ============ OVERVIEW ============ -->
+  <section class="view active" id="overview" aria-label="Overview">
+    <div class="stat-cards">
+      <article class="stat-card" style="--sc:var(--brand-soft);--sci:var(--brand)">
+        <div class="stat-head"><span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></span><span class="trend up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>+12 vs Wk2</span></div>
+        <div class="stat-value">142</div>
+        <p class="stat-title">Campers on site</p>
+      </article>
+      <article class="stat-card" style="--sc:var(--accent-soft);--sci:var(--accent-strong)">
+        <div class="stat-head"><span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9m9 5h-9m9 5h-9M5 7l-2 2 2 2M3 17l2-2-2-2"/></svg></span><span class="trend up">All zones green</span></div>
+        <div class="stat-value">28</div>
+        <p class="stat-title">Staff on duty</p>
+      </article>
+      <article class="stat-card" style="--sc:var(--sun-soft);--sci:#B8860B">
+        <div class="stat-head"><span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><span class="trend down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>Needs review</span></div>
+        <div class="stat-value">3</div>
+        <p class="stat-title">Pending enrollments</p>
+      </article>
+      <article class="stat-card" style="--sc:var(--sky-soft);--sci:var(--sky)">
+        <div class="stat-head"><span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span><span class="trend up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>+8% vs June</span></div>
+        <div class="stat-value">$41.2k</div>
+        <p class="stat-title">Collected in July</p>
+      </article>
+    </div>
+
+    <div class="grid" style="grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);align-items:start" id="ad-grid">
+      <style>@media (max-width:1100px){#ad-grid{grid-template-columns:1fr!important}}</style>
+      <div class="panel">
+        <div class="panel-head"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 3-4 3 3 4-6"/></svg>Daily Check-ins This Week</h2><span class="badge badge-green">Avg 138/day</span></div>
+        <div class="bar-chart" role="img" aria-label="Bar chart of daily check-ins Monday to Friday">
+          <div class="bar-col"><span class="bar-val">131</span><div class="bar-track"><div class="bar-fill" data-h="66"></div></div><span class="bar-day">Mon</span></div>
+          <div class="bar-col"><span class="bar-val">140</span><div class="bar-track"><div class="bar-fill alt" data-h="70"></div></div><span class="bar-day">Tue</span></div>
+          <div class="bar-col"><span class="bar-val">142</span><div class="bar-track"><div class="bar-fill" data-h="71"></div></div><span class="bar-day">Wed</span></div>
+          <div class="bar-col"><span class="bar-val">158</span><div class="bar-track"><div class="bar-fill alt" data-h="79"></div></div><span class="bar-day">Thu</span></div>
+          <div class="bar-col"><span class="bar-val">176</span><div class="bar-track"><div class="bar-fill" data-h="88"></div></div><span class="bar-day">Fri</span></div>
+        </div>
+        <div class="chart-legend"><span><i></i>Base attendance</span><span><i class="o"></i>With add-on studios</span></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 10 10H12Z"/></svg>Enrollment Mix</h2></div>
+        <div class="donut-wrap">
+          <div class="donut" role="img" aria-label="Enrollment mix: sports 45 percent, STEM 30 percent, arts and nature 25 percent">
+            <div class="donut-center"><strong>142</strong><span>campers</span></div>
+          </div>
+          <ul class="donut-legend">
+            <li><i style="background:var(--brand)"></i>Sports Academy · 45%</li>
+            <li><i style="background:var(--accent)"></i>Code &amp; Robotics · 30%</li>
+            <li><i style="background:var(--sun)"></i>Arts &amp; Nature · 25%</li>
+          </ul>
+        </div>
+        <hr class="divider" style="margin-block:20px">
+        <ul class="activity-feed">
+          <li><span class="feed-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></span><div><p>New request: Isla M. → Nature Explorers</p><time>8 minutes ago</time></div></li>
+          <li><span class="feed-dot" style="background:var(--sun-soft);color:#B8860B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span><div><p>Payment received: INV-2067 ($265)</p><time>26 minutes ago</time></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CAMPERS ============ -->
+  <section class="view" id="campers" aria-label="Camper Management">
+    <div class="panel">
+      <div class="panel-head">
+        <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>This Week's Roster</h2>
+        <div class="admin-toolbar">
+          <button class="chip active" type="button" data-camper-filter="all">All (8)</button>
+          <button class="chip" type="button" data-camper-filter="confirmed">Confirmed</button>
+          <button class="chip" type="button" data-camper-filter="pending">Pending</button>
+          <button class="chip" type="button" data-camper-filter="waitlist">Waitlist</button>
+          <button class="btn btn-primary btn-sm" type="button" onclick="this.closest('.panel').querySelector('#camperSearch').focus()">＋ Add Camper</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th scope="col">Camper</th><th scope="col">Age</th><th scope="col">Camp</th><th scope="col">Week</th><th scope="col">Parent</th><th scope="col">Status</th><th scope="col"><span class="sr-only">Action</span></th></tr></thead>
+          <tbody id="campersBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INSTRUCTORS ============ -->
+  <section class="view" id="staff" aria-label="Instructor Roster">
+    <div class="panel">
+      <div class="panel-head"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>On Duty Today · Zone Assignments</h2><span class="badge badge-green">28/28 present</span></div>
+      <div class="grid cols-3">
+        <div class="staff-chip"><img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Diego%20Fuentes&backgroundColor=c0aede" alt="" width="40" height="40" loading="lazy"><div><strong>Diego Fuentes</strong><span>Sports Lead · Field A+B</span></div><span class="status-pill status-paid" style="margin-inline-start:auto">On duty</span></div>
+        <div class="staff-chip"><img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Priya%20Nair&backgroundColor=ffd5dc" alt="" width="40" height="40" loading="lazy"><div><strong>Priya Nair</strong><span>Aquatics · Pool 1–3</span></div><span class="status-pill status-paid" style="margin-inline-start:auto">On duty</span></div>
+        <div class="staff-chip"><img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Amara%20Diallo&backgroundColor=b6e3f4" alt="" width="40" height="40" loading="lazy"><div><strong>Amara Diallo</strong><span>STEM Lab · Maker Shed</span></div><span class="status-pill status-paid" style="margin-inline-start:auto">On duty</span></div>
+        <div class="staff-chip"><img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Claire%20Dubois&backgroundColor=ffdfbf" alt="" width="40" height="40" loading="lazy"><div><strong>Claire Dubois</strong><span>Arts Studio · Kiln Room</span></div><span class="status-pill status-paid" style="margin-inline-start:auto">On duty</span></div>
+        <div class="staff-chip"><img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Sam%20Okafor&backgroundColor=d1d4f9" alt="" width="40" height="40" loading="lazy"><div><strong>Sam Okafor</strong><span>Adventure · Trailhead Gate</span></div><span class="status-pill status-pending" style="margin-inline-start:auto">Off-site trek</span></div>
+        <div class="staff-chip"><img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Elena%20Marsh&backgroundColor=c0aede" alt="" width="40" height="40" loading="lazy"><div><strong>Elena Marsh, RN</strong><span>Wellness Lodge</span></div><span class="status-pill status-paid" style="margin-inline-start:auto">On duty</span></div>
+      </div>
+    </div>
+    <div class="grid cols-2">
+      <div class="panel">
+        <div class="panel-head"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Certification Watchlist</h2></div>
+        <ul class="dot-list" style="display:grid;gap:10px">
+          <li>Priya N. — WSI renewal due <strong>Aug 30</strong> (booked ✓)</li>
+          <li>Two junior counselors — CPR refresher this Friday</li>
+          <li>All 28 background checks valid through 2027</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Weekly Staff Notes</h2></div>
+        <form data-validate data-success-title="Note saved" data-success-msg="Shared with the leadership team channel.">
+          <div class="form-field" style="margin-bottom:14px">
+            <label for="staff-note">Note to leadership channel</label>
+            <textarea id="staff-note" class="form-control" minlength="5" placeholder="Field B sprinklers fixed; archery range moves to Meadow 2 Thursday…" required></textarea>
+            <small class="field-error"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg><span></span></small>
+          </div>
+          <button type="submit" class="btn btn-primary btn-sm">Post Note</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SCHEDULE ============ -->
+  <section class="view" id="schedule" aria-label="Master Schedule">
+    <div class="panel">
+      <div class="panel-head"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Master Schedule · Week 3</h2><span class="chip active">All zones</span><span class="chip">Fields</span><span class="chip">Pools</span><span class="chip">Labs</span></div>
+      <div class="schedule-grid">
+        <div class="schedule-day"><h3>Mon</h3>
+          <div class="sched-event" style="--ev:var(--brand)"><strong>All-camp flag</strong><time>08:00 · Pavilion</time></div>
+          <div class="sched-event" style="--ev:var(--accent)"><strong>Sports rotations</strong><time>09:00 · Fields A–B</time></div>
+          <div class="sched-event" style="--ev:var(--sky)"><strong>Robotics lab 1</strong><time>13:00 · Maker Shed</time></div>
+        </div>
+        <div class="schedule-day"><h3>Tue</h3>
+          <div class="sched-event" style="--ev:var(--sky)"><strong>Swim levels 1–3</strong><time>09:00 · Pools 1–3</time></div>
+          <div class="sched-event" style="--ev:var(--berry)"><strong>Drama improv</strong><time>11:00 · Stage</time></div>
+          <div class="sched-event" style="--ev:var(--brand)"><strong>Trail hike L2</strong><time>14:00 · Trailhead</time></div>
+        </div>
+        <div class="schedule-day"><h3>Wed</h3>
+          <div class="sched-event" style="--ev:var(--accent)"><strong>Archery badge day</strong><time>10:00 · Range</time></div>
+          <div class="sched-event" style="--ev:var(--sky)"><strong>Kayak clinic</strong><time>13:00 · Dock</time></div>
+          <div class="sched-event" style="--ev:var(--sun)"><strong>Science show</strong><time>15:00 · Pavilion</time></div>
+        </div>
+        <div class="schedule-day"><h3>Thu</h3>
+          <div class="sched-event" style="--ev:var(--berry)"><strong>Pottery wheels</strong><time>09:00 · Kiln Room</time></div>
+          <div class="sched-event" style="--ev:var(--brand)"><strong>Canoe expedition</strong><time>11:00 · Lake</time></div>
+          <div class="sched-event" style="--ev:var(--sky)"><strong>Swim assessments</strong><time>15:00 · Pool 1</time></div>
+        </div>
+        <div class="schedule-day"><h3>Fri</h3>
+          <div class="sched-event" style="--ev:var(--sun)"><strong>Robot Wars finals</strong><time>10:00 · Maker Shed</time></div>
+          <div class="sched-event" style="--ev:var(--accent)"><strong>Olympics</strong><time>13:00 · Fields A–B</time></div>
+          <div class="sched-event" style="--ev:var(--brand)"><strong>Campfire + awards</strong><time>17:00 · Fire Circle</time></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINANCES ============ -->
+  <section class="view" id="finances" aria-label="Finances">
+    <div class="payment-summary">
+      <div class="pay-stat green"><svg class="bgicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg><h3>Collected · July</h3><strong>$41,240</strong></div>
+      <div class="pay-stat orange"><svg class="bgicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8m-4-4h8"/></svg><h3>Outstanding</h3><strong>$3,180</strong></div>
+      <div class="pay-stat blue"><svg class="bgicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><h3>Scholarships granted</h3><strong>$9,400</strong></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg>Recent Transactions</h2><button class="btn btn-ghost btn-sm">Export CSV</button></div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th scope="col">Invoice</th><th scope="col">Family</th><th scope="col">Item</th><th scope="col">Amount</th><th scope="col">Status</th></tr></thead>
+          <tbody>
+            <tr class="invoice-row"><td>INV-2078</td><td>Okafor</td><td>Coding Camp · Session B</td><td><strong>$340</strong></td><td><span class="status-pill status-paid">Paid</span></td></tr>
+            <tr class="invoice-row"><td>INV-2077</td><td>Murphy</td><td>Nature Explorers deposit</td><td><strong>$50</strong></td><td><span class="status-pill status-pending">Pending</span></td></tr>
+            <tr class="invoice-row"><td>INV-2076</td><td>Ahmed</td><td>Summit Unlimited · balance</td><td><strong>$1,290</strong></td><td><span class="status-pill status-paid">Paid</span></td></tr>
+            <tr class="invoice-row"><td>INV-2075</td><td>Walsh</td><td>Late pickup fee ×2</td><td><strong>$30</strong></td><td><span class="status-pill status-overdue">Overdue</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ANNOUNCEMENTS ============ -->
+  <section class="view" id="announcements" aria-label="Announcements">
+    <div class="grid" style="grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);align-items:start" id="an-grid">
+      <style>@media (max-width:1100px){#an-grid{grid-template-columns:1fr!important}}</style>
+      <div class="panel">
+        <div class="panel-head"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 22 2 13 21l-2-8-8-2Z"/></svg>Compose Broadcast</h2></div>
+        <form id="announceForm">
+          <div class="form-field">
+            <label for="annTitle">Title <span class="req">*</span></label>
+            <input id="annTitle" class="form-control" type="text" placeholder="Friday campfire moved to the pavilion" required>
+          </div>
+          <div class="form-field">
+            <label for="annAudience">Audience</label>
+            <select id="annAudience" class="form-control">
+              <option>All families</option>
+              <option>Sports Academy only</option>
+              <option>STEM Lab only</option>
+              <option>Arts Studio only</option>
+              <option>Staff only</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="annMsg">Message <span class="req">*</span></label>
+            <textarea id="annMsg" class="form-control" minlength="5" placeholder="Keep it warm, clear and under 60 words…" required></textarea>
+            <small class="field-error"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg><span></span></small>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Publish Announcement<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/></svg></button>
+        </form>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Sent This Week</h2><span class="badge badge-blue">Reach: 96% opened</span></div>
+        <div id="adminAnnounceList" style="display:grid;gap:14px">
+          <article class="announce-item">
+            <div class="announce-icon" style="background:var(--sun-soft);color:#B8860B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/><circle cx="12" cy="12" r="4"/></svg></div>
+            <div><h3>Heat-wave protocol active</h3><time>Jul 28 · All families</time><p>Shade rotations doubled, water breaks every 20 minutes through Friday.</p></div>
+          </article>
+          <article class="announce-item">
+            <div class="announce-icon" style="background:var(--berry-soft);color:var(--berry)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 2.9 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 7.1-1.01Z"/></svg></div>
+            <div><h3>Showcase night tickets live</h3><time>Jul 27 · Arts families</time><p>Reserve seats for Friday's gallery and stage showcase — free, two per family.</p></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REPORTS ============ -->
+  <section class="view" id="reports" aria-label="Reports">
+    <div class="grid cols-2">
+      <div class="panel">
+        <div class="panel-head"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 3-4 3 3 4-6"/></svg>Season Goals Progress</h2></div>
+        <div style="display:grid;gap:18px">
+          <div class="skill-row"><div class="skill-top"><span>Summer enrollment target (900)</span><span>87%</span></div><div class="progress-track"><span class="progress-fill ad-w" data-w="87"></span></div></div>
+          <div class="skill-row"><div class="skill-top"><span>NPS goal (75+)</span><span>Current 81 ✓</span></div><div class="progress-track"><span class="progress-fill ad-w" data-w="100"></span></div></div>
+          <div class="skill-row"><div class="skill-top"><span>Scholarship fund ($12k)</span><span>78%</span></div><div class="progress-track"><span class="progress-fill ad-w" data-w="78"></span></div></div>
+          <div class="skill-row"><div class="skill-top"><span>Staff retention (85%)</span><span>89% ✓</span></div><div class="progress-track"><span class="progress-fill ad-w" data-w="100"></span></div></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>Downloads</h2></div>
+        <div style="display:grid;gap:12px">
+          <div class="camp-row" style="padding:14px 18px"><div class="thumb-tile g-brand" style="width:48px;height:48px;border-radius:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg></div><div class="camp-row-info"><h3>Week 3 Attendance Report</h3><p>PDF · updated daily 6pm</p></div><button class="btn btn-ghost btn-sm">Download</button></div>
+          <div class="camp-row" style="padding:14px 18px"><div class="thumb-tile g-sky" style="width:48px;height:48px;border-radius:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg></div><div class="camp-row-info"><h3>July Financial Summary</h3><p>XLSX · reconciled Aug 01</p></div><button class="btn btn-ghost btn-sm">Download</button></div>
+          <div class="camp-row" style="padding:14px 18px"><div class="thumb-tile g-berry" style="width:48px;height:48px;border-radius:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg></div><div class="camp-row-info"><h3>Parent Satisfaction Survey</h3><p>PDF · July responses (n=214)</p></div><button class="btn btn-ghost btn-sm">Download</button></div>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg>Insights Snapshot</h2><span class="badge badge-orange">AI-free, human-curated</span></div>
+      <ul class="check-list cols-2" style="gap:12px 28px">
+        <li>Thursday add-on studios run at 94% capacity — consider adding a second Stagecraft block.</li>
+        <li>Week-over-week camper mood scores up 6% since kayak clinics launched.</li>
+        <li>Little Explorers waitlist is the season's longest — expand to 3 crews for 2027?</li>
+        <li>Parents open photo digests 3× more than email newsletters — keep investing there.</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+</div>
+
+<button class="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg></button>
+
+<script src="js/main.js"></script>
+<script src="js/admin.js"></script>
+<script>
+(function () {
+  "use strict";
+  document.querySelectorAll(".progress-fill.ad-w[data-w]").forEach((f) => {
+    const io = new IntersectionObserver((es) => es.forEach((en) => {
+      if (!en.isIntersecting) return;
+      f.style.width = f.dataset.w + "%";
+      io.disconnect();
+    }), { threshold: .4 });
+    io.observe(f);
+  });
+})();
+</script>
+</body>
+</html>
