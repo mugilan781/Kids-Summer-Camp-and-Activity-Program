@@ -271,11 +271,13 @@ table.data-table{width:100%;border-collapse:collapse;min-width:640px}
 [data-theme="dark"] .status-pending{color:var(--sun)}
 .status-overdue{background:rgba(229,72,77,.12);color:#E5484D}
 .pagination{display:flex;gap:8px;justify-content:center;margin-top:36px}
-.pagination a,.pagination span{
+.pagination a,.pagination span,.pagination button{
   min-width:44px;height:44px;display:grid;place-items:center;border-radius:12px;
   border:1.5px solid var(--line);font-weight:800;font-size:.95rem;color:var(--ink-2);
-  background:var(--surface);transition:all .25s;padding-inline:12px;
+  background:var(--surface);transition:all .25s;padding-inline:12px;cursor:pointer;font-family:inherit;
 }
+.pagination button:disabled{opacity:.4;cursor:not-allowed}
+.pagination button:not(:disabled):hover{border-color:var(--brand);color:var(--brand);transform:translateY(-2px)}
 .pagination a:hover{border-color:var(--brand);color:var(--brand);transform:translateY(-2px)}
 .pagination .current{background:var(--brand);border-color:var(--brand);color:#fff}
 .breadcrumbs{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.9rem;font-weight:700;color:var(--muted)}
