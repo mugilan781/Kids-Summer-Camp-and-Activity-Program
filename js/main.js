@@ -57,7 +57,10 @@ const CampQuest = {
   transitions() {
     if (!document.querySelector(".page-transition")) return;
     const overlay = document.querySelector(".page-transition");
+    let navTimer = null;
+    const hideOverlay = () => { clearTimeout(navTimer); overlay.classList.remove("active"); };
     requestAnimationFrame(() => overlay.classList.remove("active"));
+    window.addEventListener("pageshow", hideOverlay);
     document.addEventListener("click", (e) => {
       const link = e.target.closest('a[href]');
       if (!link || link.target === "_blank" || e.metaKey || e.ctrlKey) return;
@@ -66,7 +69,7 @@ const CampQuest = {
       if (link.origin !== location.origin) return;
       e.preventDefault();
       overlay.classList.add("active");
-      setTimeout(() => location.href = href, 380);
+      navTimer = setTimeout(() => location.href = href, 380);
     });
   },
   theme() {
