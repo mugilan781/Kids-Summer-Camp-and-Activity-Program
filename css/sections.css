@@ -558,8 +558,8 @@
 
 .side-layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:clamp(26px,4vw,44px);align-items:start}
 @media (max-width:1024px){.side-layout{grid-template-columns:1fr}}
-.side-widget{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:24px;box-shadow:var(--shadow-sm);position:sticky;top:calc(var(--header-h) + 20px)}
-.side-widget+.side-widget{margin-top:20px;position:static}
+.side-widget{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:24px;box-shadow:var(--shadow-sm)}
+.side-widget+.side-widget{margin-top:20px}
 .side-widget h3{font-size:1.02rem;margin-bottom:14px;display:flex;align-items:center;gap:9px}
 .side-widget h3 svg{width:18px;height:18px;color:var(--brand)}
 .side-links{display:grid;gap:8px}
