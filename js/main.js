@@ -88,6 +88,7 @@ const CampQuest = {
     const apply = (dir) => {
       document.documentElement.setAttribute("dir", dir);
       document.documentElement.setAttribute("lang", dir === "rtl" ? "ar" : "en");
+      document.querySelectorAll("[data-rtl-label]").forEach((el) => el.textContent = dir === "rtl" ? "LTR" : "RTL");
       try { localStorage.setItem("cq-dir", dir); } catch (_) {}
     };
     let saved = null;
@@ -116,7 +117,7 @@ const CampQuest = {
     addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
   },
   dropdowns() {
-    document.querySelectorAll(".nav-drop").forEach((drop) => {
+    document.querySelectorAll(".nav-drop, .profile-menu").forEach((drop) => {
       const btn = drop.querySelector("button");
       btn.addEventListener("click", (e) => {
         e.stopPropagation();
