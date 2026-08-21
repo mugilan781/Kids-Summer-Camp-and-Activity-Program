@@ -427,13 +427,6 @@
   -webkit-background-clip:text;background-clip:text;color:transparent;
   letter-spacing:6px;position:relative;display:inline-block;
 }
-.error-code .eye{
-  position:absolute;top:22%;width:.14em;height:.14em;border-radius:50%;
-  background:var(--ink);animation:blink 4.5s infinite;
-}
-.error-code .eye.l{left:31%}
-.error-code .eye.r{right:29%}
-@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
 .maint-scene{min-height:100vh;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden;padding:48px 20px}
 .countdown{display:flex;gap:clamp(10px,2.4vw,22px);justify-content:center;margin:34px 0}
 .count-unit{
