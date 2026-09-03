@@ -598,7 +598,8 @@
 .quote-slider{max-width:800px;margin-inline:auto}
 .quote-slide{display:none;text-align:center;padding:6px}
 .quote-slide.active{display:block;animation:fade-up .7s var(--ease-out)}
-.quote-slide blockquote{font-family:var(--font-display);font-size:clamp(1.15rem,2.4vw,1.65rem);line-height:1.5;color:var(--ink);margin:22px 0 26px;font-weight:500}
+.quote-slide .testi-stars{justify-content:center;margin-bottom:14px}
+.quote-slide blockquote{font-family:var(--font-display);font-size:clamp(1.15rem,2.4vw,1.65rem);line-height:1.5;color:var(--ink);margin:0 0 26px;font-weight:500}
 .quote-person{display:inline-flex;align-items:center;gap:14px;text-align:start}
 .quote-person img{width:54px;height:54px}
 .quote-person strong{display:block;font-family:var(--font-display)}
