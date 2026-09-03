@@ -198,7 +198,7 @@ const ParentDash = {
           <div class="camp-option-price">${c.price === 0 ? "Certificate" : "$" + c.price + (c.price > 100 ? " / week" : " add-on")}</div>
         </div>
         <span class="camp-option-badge">${c.age}</span>
-        <span class="camp-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+        <span class="camp-option-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.75l6 6 9-13.5"/></svg></span>
       </label>
     `).join("");
     // bind camp selection
@@ -297,6 +297,40 @@ const ParentDash = {
     document.querySelector("[data-enroll-again]")?.addEventListener("click", () => {
       this.resetEnrollWizard();
     });
+    // Pay method picker
+    const payMethods = document.querySelectorAll(".pay-method");
+    const payPanels = document.querySelectorAll("[data-pay-panel]");
+    payMethods.forEach((label) => {
+      label.addEventListener("click", () => {
+        payMethods.forEach((l) => l.classList.remove("selected"));
+        label.classList.add("selected");
+        const val = label.dataset.pay;
+        const radio = label.querySelector("input");
+        if (radio) radio.checked = true;
+        payPanels.forEach((p) => p.hidden = p.dataset.payPanel !== val);
+        const submitBtn = document.getElementById("paySubmitBtn");
+        if (submitBtn) {
+          if (val === "upi") submitBtn.innerHTML = `Pay $50 via UPI & Complete Enrollment <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>`;
+          else if (val === "netbanking") submitBtn.innerHTML = `Pay $50 via NetBanking & Complete Enrollment <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>`;
+          else submitBtn.innerHTML = `Pay $50 & Complete Enrollment <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>`;
+        }
+        this.clearError("step4Error");
+      });
+    });
+    // UPI app selection
+    document.querySelectorAll(".upi-app").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".upi-app").forEach((b) => b.setAttribute("aria-pressed","false"));
+        btn.setAttribute("aria-pressed","true");
+        const upiMap = { gpay:"okaxis", phonepe:"ybl", bhim:"upi", paytm:"paytm" };
+        const suffix = upiMap[btn.dataset.upi] || "okaxis";
+        const upiInput = document.getElementById("upiId");
+        if (upiInput && !upiInput.value.includes("@")) {
+          upiInput.placeholder = `name@${suffix}`;
+        }
+        this.clearError("step4Error");
+      });
+    });
     // Health & contact live update
     document.getElementById("enrollHealth")?.addEventListener("input", (e) => this.enrollState.health = e.target.value);
     document.getElementById("enrollContact")?.addEventListener("input", (e) => this.enrollState.contact = e.target.value);
@@ -363,22 +397,35 @@ const ParentDash = {
       return true;
     }
     if (step === 4) {
-      const name = document.getElementById("payName").value.trim();
-      const email = document.getElementById("payEmail").value.trim();
-      const card = document.getElementById("payCard").value.replace(/\s/g,"");
-      const exp = document.getElementById("payExp").value.trim();
-      const cvv = document.getElementById("payCvv").value.trim();
-      if (!name) return this.showError("step4Error","Cardholder name is required.");
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return this.showError("step4Error","Enter a valid receipt email.");
-      if (!/^\d{16}$/.test(card)) return this.showError("step4Error","Enter a valid 16-digit card number (use 4242 4242 4242 4242 for demo).");
-      if (!/^\d{2}\s\/\s\d{2}$/.test(exp)) return this.showError("step4Error","Expiry must be MM / YY.");
-      else {
-        const [mm, yy] = exp.split("/").map((s)=>parseInt(s.trim(),10));
-        if (mm < 1 || mm > 12) return this.showError("step4Error","Expiry month must be 01–12.");
-        const now = new Date(); const curYY = now.getFullYear()%100; const curMM = now.getMonth()+1;
-        if (yy < curYY || (yy===curYY && mm < curMM)) return this.showError("step4Error","Card has expired.");
+      const method = document.querySelector("input[name='payMethod']:checked")?.value || "card";
+      if (method === "card") {
+        const name = document.getElementById("payName").value.trim();
+        const email = document.getElementById("payEmail").value.trim();
+        const card = document.getElementById("payCard").value.replace(/\s/g,"");
+        const exp = document.getElementById("payExp").value.trim();
+        const cvv = document.getElementById("payCvv").value.trim();
+        if (!name) return this.showError("step4Error","Cardholder name is required.");
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return this.showError("step4Error","Enter a valid receipt email.");
+        if (!/^\d{16}$/.test(card)) return this.showError("step4Error","Enter a valid 16-digit card number (use 4242 4242 4242 4242 for demo).");
+        if (!/^\d{2}\s\/\s\d{2}$/.test(exp)) return this.showError("step4Error","Expiry must be MM / YY.");
+        else {
+          const [mm, yy] = exp.split("/").map((s)=>parseInt(s.trim(),10));
+          if (mm < 1 || mm > 12) return this.showError("step4Error","Expiry month must be 01–12.");
+          const now = new Date(); const curYY = now.getFullYear()%100; const curMM = now.getMonth()+1;
+          if (yy < curYY || (yy===curYY && mm < curMM)) return this.showError("step4Error","Card has expired.");
+        }
+        if (!/^\d{3,4}$/.test(cvv)) return this.showError("step4Error","CVV must be 3 or 4 digits.");
+      } else if (method === "upi") {
+        const upiId = document.getElementById("upiId").value.trim();
+        const email = document.getElementById("upiEmail").value.trim();
+        if (!upiId || !/^[\w.\-]{2,}@[\w.\-]+$/.test(upiId)) return this.showError("step4Error","Enter a valid UPI ID (e.g. name@okaxis, phone@upi).");
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return this.showError("step4Error","Enter a valid receipt email for UPI confirmation.");
+      } else if (method === "netbanking") {
+        const bank = document.getElementById("netBank").value;
+        const email = document.getElementById("netEmail").value.trim();
+        if (!bank) return this.showError("step4Error","Please select your bank for NetBanking.");
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return this.showError("step4Error","Enter a valid receipt email.");
       }
-      if (!/^\d{3,4}$/.test(cvv)) return this.showError("step4Error","CVV must be 3 or 4 digits.");
       this.clearError("step4Error");
       return true;
     }
@@ -464,6 +511,7 @@ const ParentDash = {
     const camp = this.camps.find((c)=>c.id===this.enrollState.campId);
     const weekLabel = this.enrollState.weekLabel;
     const camperName = this.enrollState.camper === "new" ? this.enrollState.camperName : (this.enrollState.camper === "maya" ? "Maya Whitmore" : "Leo Whitmore");
+    const payMethod = document.querySelector("input[name='payMethod']:checked")?.value || "card";
     const enrollment = {
       id: "ENR-" + Date.now().toString(36).toUpperCase(),
       camper: camperName,
@@ -473,6 +521,7 @@ const ParentDash = {
       week: this.enrollState.weekValue,
       weekLabel: weekLabel,
       price: camp.price,
+      payMethod: payMethod,
       date: new Date().toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"}),
       status: "pending"
     };
@@ -502,18 +551,20 @@ const ParentDash = {
       countEl.textContent = cur + 1;
     }
     // show success
-    document.getElementById("enrollSuccessText").textContent = `${camperName} is queued for ${camp.name} — ${weekLabel}. We’ll confirm within 24h and your $50 deposit is secured.`;
+    const methodLabel = payMethod === "upi" ? "UPI" : payMethod === "netbanking" ? "NetBanking" : "Card";
+    document.getElementById("enrollSuccessText").textContent = `${camperName} is queued for ${camp.name} — ${weekLabel}. We’ll confirm within 24h and your $50 deposit via ${methodLabel} is secured.`;
     document.getElementById("enrollSuccessDetails").innerHTML = `
       <dl style="display:grid;gap:8px">
         <div class="detail-row"><dt>Enrollment ID</dt><dd>${enrollment.id}</dd></div>
         <div class="detail-row"><dt>Camper</dt><dd>${camperName}</dd></div>
         <div class="detail-row"><dt>Camp</dt><dd>${camp.name}</dd></div>
         <div class="detail-row"><dt>Week</dt><dd>${weekLabel}</dd></div>
+        <div class="detail-row"><dt>Payment</dt><dd>$50 via ${methodLabel}</dd></div>
         <div class="detail-row"><dt>Invoice</dt><dd>${invId} — pending $50 deposit</dd></div>
       </dl>
     `;
     this.updateEnrollStep("success");
-    CampQuest.toast("success","Enrollment confirmed!", `${camp.name} for ${camperName} — $50 deposit processed.`);
+    CampQuest.toast("success","Enrollment confirmed!", `${camp.name} for ${camperName} — $50 via ${methodLabel} processed.`);
     // fire confetti-like toast for status
     setTimeout(()=> {
       // auto-create status entry preview? just toast
@@ -576,6 +627,26 @@ const ParentDash = {
     document.getElementById("enrollContact").value="Sarah Whitmore · +1 (555) 010-2288";
     document.getElementById("enrollTerms").checked=false;
     document.getElementById("enrollPaymentForm").reset();
+    // reset pay method to card
+    document.querySelectorAll(".pay-method").forEach((l,i)=> l.classList.toggle("selected", i===0));
+    document.querySelectorAll("[data-pay-panel]").forEach((p)=> p.hidden = p.dataset.payPanel !== "card");
+    const cardRadio = document.querySelector("input[name='payMethod'][value='card']");
+    if (cardRadio) cardRadio.checked = true;
+    const upiRadio = document.querySelector("input[name='payMethod'][value='upi']");
+    if (upiRadio) upiRadio.checked = false;
+    const netRadio = document.querySelector("input[name='payMethod'][value='netbanking']");
+    if (netRadio) netRadio.checked = false;
+    document.querySelectorAll(".upi-app").forEach((b)=> b.setAttribute("aria-pressed","false"));
+    const upiIdEl = document.getElementById("upiId");
+    if (upiIdEl) { upiIdEl.value=""; upiIdEl.placeholder="name@okaxis / 98xxxxxx10@upi"; }
+    const upiEmailEl = document.getElementById("upiEmail");
+    if (upiEmailEl) upiEmailEl.value="";
+    const netBankEl = document.getElementById("netBank");
+    if (netBankEl) netBankEl.value="";
+    const netEmailEl = document.getElementById("netEmail");
+    if (netEmailEl) netEmailEl.value="";
+    const submitBtn = document.getElementById("paySubmitBtn");
+    if (submitBtn) submitBtn.innerHTML = `Pay $50 & Complete Enrollment <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>`;
     document.querySelectorAll(".field-error").forEach((e)=>{ e.classList.remove("show"); e.style.display="none"; });
     document.getElementById("enrollPricePreview").innerHTML='<span style="color:var(--muted);font-weight:600;font-size:.9rem">Select a camp and week to see pricing.</span>';
     this.updateEnrollStep(1);
