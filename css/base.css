@@ -30,6 +30,7 @@
   --font-body:"Nunito",system-ui,sans-serif;
   --container:1180px;
   --header-h:76px;
+  --page-hero-h:clamp(340px, 38vh, 420px);
   --ease-spring:cubic-bezier(.34,1.56,.64,1);
   --ease-out:cubic-bezier(.22,.61,.36,1);
 }
