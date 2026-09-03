@@ -19,181 +19,134 @@
 <div class="page-transition active"><div class="pt-logo"><span class="pt-ring"></span></div></div>
 <a class="skip-link" href="#main">Skip to main content</a>
 
-<main id="main" class="auth-shell">
-
-<section class="auth-main" style="order:2" aria-label="Create account">
-  <div class="auth-topbar">
-    <a class="logo" href="index.html"><img class="logo-img" src="images/logo.png" alt="" width="42" height="42">Camp<em>Quest</em></a>
-    <div style="display:flex;gap:10px">
-      <button class="icon-btn" data-theme-toggle aria-label="Toggle dark mode">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
-      </button>
-      <button class="icon-btn" data-rtl-toggle aria-label="Toggle RTL mode">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg>
-      </button>
-      <a class="icon-btn" href="index.html" aria-label="Back to homepage">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-      </a>
-    </div>
-  </div>
-
+<main id="main" class="auth-shell" aria-label="Create account">
   <div class="auth-card" data-reveal>
-    <span class="eyebrow">Join The Adventure</span>
-    <h1>Create Your Family Account</h1>
-    <p>Free forever — you only pay when you reserve a camp week.</p>
+    <div class="auth-brand">
+      <a class="logo" href="index.html" aria-label="CampQuest home"><img class="logo-img" src="images/logo.png" alt="" width="42" height="42">Camp<em>Quest</em></a>
+      <span class="auth-brand-tagline">Kids Summer Camp &amp; Activity Program</span>
+    </div>
 
-    <form data-validate data-success-title='Account created! <svg class="inline-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8Z"/></svg>' data-success-msg="Welcome kit is on its way to your inbox.">
-      <div class="grid cols-2" style="gap:0 16px">
-        <div class="form-field">
-          <label for="su-name">Parent's full name <span class="req">*</span></label>
-          <div class="input-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-            <input id="su-name" class="form-control" type="text" placeholder="Alex Morgan" required autocomplete="name">
-          </div>
-          <small class="field-error"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg><span></span></small>
-        </div>
-        <div class="form-field">
-          <label for="su-phone">Mobile number</label>
-          <div class="input-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
-            <input id="su-phone" class="form-control" type="tel" placeholder="+1 (555) 000-0000">
-          </div>
-          <small class="field-error"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg><span></span></small>
-        </div>
-      </div>
+    <h1>Create Your Account</h1>
+    <p class="auth-subtitle">Join CampQuest — free forever, you only pay when you reserve a week.</p>
+
+    <form data-validate data-success-title='Account created! <svg class="inline-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8Z"/></svg>' data-success-msg="Welcome kit is on its way to your inbox." id="signup-form">
       <div class="form-field">
-        <label for="su-email">Email address <span class="req">*</span></label>
+        <label for="su-name">Full Name <span class="req">*</span></label>
         <div class="input-wrap">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
-          <input id="su-email" class="form-control" type="email" placeholder="parent@email.com" required autocomplete="email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          <input id="su-name" class="form-control" type="text" name="name" placeholder="Alex Morgan" required autocomplete="name">
         </div>
-        <small class="field-error"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg><span></span></small>
+        <small class="field-error"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg><span></span></small>
       </div>
+
+      <div class="form-field">
+        <label for="su-email">Email Address <span class="req">*</span></label>
+        <div class="input-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+          <input id="su-email" class="form-control" type="email" name="email" placeholder="parent@email.com" required autocomplete="email" inputmode="email" spellcheck="false">
+        </div>
+        <small class="field-error"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg><span></span></small>
+      </div>
+
       <div class="form-field">
         <label for="su-pass">Password <span class="req">*</span></label>
         <div class="input-wrap">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          <input id="su-pass" class="form-control" type="password" placeholder="At least 8 characters" required minlength="8" autocomplete="new-password">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <input id="su-pass" class="form-control" type="password" name="password" placeholder="At least 8 characters" required minlength="8" autocomplete="new-password">
           <button type="button" class="password-toggle" data-password-toggle aria-label="Show password">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"/><circle cx="12" cy="12" r="3"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"/><circle cx="12" cy="12" r="3"/></svg>
           </button>
         </div>
         <div class="strength-meter weak" data-strength="#su-pass" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
         <p class="strength-text">Use 8+ characters with letters, numbers &amp; symbols</p>
-        <small class="field-error"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg><span></span></small>
+        <small class="field-error"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg><span></span></small>
       </div>
-      <div class="grid cols-2" style="gap:0 16px">
-        <div class="form-field">
-          <label for="su-child">First camper's first name <span class="req">*</span></label>
-          <div class="input-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>
-            <input id="su-child" class="form-control" type="text" placeholder="Maya" required>
-          </div>
-          <small class="field-error"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg><span></span></small>
+
+      <div class="form-field">
+        <label for="su-confirm">Confirm Password <span class="req">*</span></label>
+        <div class="input-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <input id="su-confirm" class="form-control" type="password" name="confirm-password" placeholder="Repeat password" required minlength="8" autocomplete="new-password">
+          <button type="button" class="password-toggle" data-password-toggle aria-label="Show password">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
         </div>
-        <div class="form-field">
-          <label for="su-age">Camper age (this summer)</label>
-          <select id="su-age" class="form-control">
-            <option>5 – 7 (Little Explorers)</option>
-            <option selected>8 – 10 (Trail Seekers)</option>
-            <option>11 – 14 (Summit Crew)</option>
-          </select>
-        </div>
+        <small class="field-error" id="su-confirm-error"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg><span></span></small>
       </div>
-      <label class="form-check" style="margin-bottom:12px">
-        <input type="checkbox" required data-required-msg="Please accept the terms to continue.">
+
+      <label class="form-check" style="margin-bottom:10px">
+        <input type="checkbox" required data-required-msg="Please accept the terms to continue." id="su-terms" name="terms">
         <span>I agree to the <a href="terms.html" style="color:var(--brand)">Terms &amp; Conditions</a> and <a href="privacy.html" style="color:var(--brand)">Privacy Policy</a>.</span>
       </label>
-      <label class="form-check" style="margin-bottom:22px">
-        <input type="checkbox" checked>
+      <label class="form-check" style="margin-bottom:20px">
+        <input type="checkbox" checked name="newsletter">
         <span>Send me early-bird alerts and camp guides (monthly, no spam).</span>
       </label>
-      <button type="submit" class="btn btn-accent btn-lg btn-block">Create Free Account<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+
+      <button type="submit" class="btn btn-accent btn-lg btn-block">Create Account<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
     </form>
+
+    <div class="auth-divider" aria-hidden="true">or sign up with</div>
+
+    <div class="social-grid" aria-label="Social signup options">
+      <button type="button" class="btn-social" data-social="google" aria-label="Continue with Google">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.31v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.09Z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23Z"/><path fill="#FBBC05" d="M5.84 14.09A6.97 6.97 0 0 1 5.48 12a6.97 6.97 0 0 1 .36-2.09V7.07H2.18A11 11 0 0 0 1 12a11 11 0 0 0 1.18 4.93l3.66-2.84Z"/><path fill="#EA4335" d="M12 5.38a6.32 6.32 0 0 1 4.43 1.73l3.32-3.32A10.96 10.96 0 0 0 12 1C7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53Z"/></svg>
+        Google
+      </button>
+      <button type="button" class="btn-social" data-social="apple" aria-label="Continue with Apple">
+        <svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.6 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+        Apple
+      </button>
+    </div>
 
     <p class="auth-alt">Already have an account? <a href="login.html">Log in instead</a></p>
   </div>
-
-  <div class="trust-row">
-    <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>No card needed to sign up</span>
-    <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>COPPA-compliant child data</span>
-    <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Add unlimited siblings later</span>
-  </div>
-</section>
-
-<aside class="auth-side" style="order:1" aria-label="Why join CampQuest">
-  <img class="bg" src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=1400&q=80" alt="" loading="lazy">
-  <div class="auth-side-content">
-    <span class="quote-mark">"</span>
-    <blockquote>Account created on Sunday, campfire s'mores by Friday. That fast.</blockquote>
-    <div class="auth-side-person">
-      <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=200&q=80" alt="Portrait of Priya Nair" loading="lazy">
-      <div><strong>Priya Nair</strong><span>Head of Aquatics · Welcome-team lead</span></div>
-    </div>
-    <div class="auth-stats">
-      <div><strong>3 min</strong><span>average signup</span></div>
-      <div><strong>$50</strong><span>reserves any week</span></div>
-      <div><strong>Free</strong><span>to create, always</span></div>
-    </div>
-  </div>
-</aside>
-
 </main>
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-col footer-about">
-        <a class="logo" href="index.html"><img class="logo-img" src="images/logo.png" alt="" width="42" height="42">Camp<em>Quest</em></a>
-        <p>CampQuest creates unforgettable summer experiences where children explore, create, learn, and grow through thoughtfully designed camps, activities, and outdoor adventures.</p>
-        <div class="social-row">
-          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
-          <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m22.54 6.42a2.78 2.78 0 0 0-1.95-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.92 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33ZM9.75 15.02v-6.53L15.5 11.75Z"/></svg></a>
-          <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-6.77 7.74L23.2 22h-6.23l-4.88-6.38L6.5 22H3.35l7.24-8.28L2.4 2h6.39l4.41 5.83Zm-1.1 18.13h1.73L7.86 3.76H6Z"/></svg></a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <nav class="footer-links" aria-label="Quick links">
-          <a href="index.html">Home</a>
-          <a href="home-2.html">Home 2</a>
-          <a href="about.html">About</a>
-          <a href="services.html">Services</a>
-          <a href="blog.html">Blog</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-      </div>
-      <div class="footer-col">
-        <h4>Contact Us</h4>
-        <ul class="footer-contact-list">
-          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=4821+Lakeshore+Trail%2C+Boulder+Creek%2C+CA+95007" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>4821 Lakeshore Trail, Boulder Creek, CA 95007</span></a></li>
-          <li><a href="tel:+18005550199"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>+1 (800) 555-0199</span></a></li>
-          <li><a href="mailto:hello@campquest.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><span>hello@campquest.com</span></a></li>
-        </ul>
-      </div>
-      <div class="footer-col footer-news">
-        <h4>Stay In The Loop</h4>
-        <p>Get monthly camp guides, activity ideas, early-bird updates, and family-friendly tips delivered to your inbox.</p>
-        <form class="newsletter-form" data-validate data-success-title="Thanks for subscribing!" data-success-msg="Welcome to the CampQuest family — see you at camp!">
-          <label class="sr-only" for="nl-email">Email address</label>
-          <input id="nl-email" type="email" name="email" placeholder="Enter your email address" required>
-          <button class="btn btn-primary btn-sm" type="submit">Subscribe</button>
-        </form>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© <span data-year>2026</span> CampQuest Adventures. All rights reserved.</span>
-      <nav aria-label="Legal">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms &amp; Conditions</a>
-        <a href="sitemap.html">Sitemap</a>
-      </nav>
-    </div>
-  </div>
-</footer>
-
 <script src="js/main.js"></script>
+<script>
+  (function(){
+    var form = document.getElementById('signup-form');
+    var pass = document.getElementById('su-pass');
+    var confirm = document.getElementById('su-confirm');
+    var confirmError = document.getElementById('su-confirm-error');
+    function validateConfirm(){
+      if(!confirm) return true;
+      var mismatch = confirm.value && pass.value !== confirm.value;
+      var msg = mismatch ? 'Passwords do not match.' : '';
+      if(!confirm.value && confirm.required) msg = 'This field is required.';
+      else if(confirm.value && confirm.value.length < 8) msg = 'Must be at least 8 characters.';
+      if(confirmError){
+        var span = confirmError.querySelector('span');
+        if(span) span.textContent = msg;
+        confirmError.classList.toggle('show', !!msg);
+      }
+      confirm.classList.toggle('invalid', !!msg);
+      return !msg;
+    }
+    if(confirm && pass){
+      confirm.addEventListener('input', validateConfirm);
+      confirm.addEventListener('blur', validateConfirm);
+      pass.addEventListener('input', function(){ if(confirm.value) validateConfirm(); });
+      if(form){
+        form.addEventListener('submit', function(e){
+          if(!validateConfirm()){
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            confirm.focus();
+            CampQuest.toast('error','Check the form','Passwords do not match.');
+          }
+        }, true);
+      }
+    }
+    document.querySelectorAll('[data-social]').forEach(function(b){
+      b.addEventListener('click', function(){
+        var label = b.getAttribute('data-social');
+        var name = label.charAt(0).toUpperCase()+label.slice(1);
+        CampQuest.toast('info', name + ' sign-up', 'Social authentication is UI-only in this demo. Use the form to create your account.');
+      });
+    });
+  })();
+</script>
 </body>
 </html>
