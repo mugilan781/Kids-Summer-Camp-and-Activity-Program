@@ -251,39 +251,150 @@
     </div>
   </section>
 
-  <!-- ============ CHILD ENROLLMENT ============ -->
+  <!-- ============ CHILD ENROLLMENT — PROPER WIZARD ============ -->
   <section class="view" id="enrollment" aria-label="Child Enrollment">
-    <div class="panel">
-      <div class="panel-head"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>Enroll In Three Steps</h2><span class="badge badge-orange">Takes ~2 minutes</span></div>
-      <div class="enroll-steps">
-        <div class="step-tile done"><h3>Choose camper</h3><p>Pick which child you're enrolling below.</p></div>
-        <div class="step-tile"><h3>Pick camp &amp; week</h3><p>Match interests to available sessions.</p></div>
-        <div class="step-tile"><h3>Confirm details</h3><p>We pre-fill health info from their profile.</p></div>
-        <div class="step-tile"><h3>Pay deposit</h3><p>Reserve instantly; balance due June 30.</p></div>
+    <div class="panel enroll-wizard" id="enrollWizard">
+      <div class="panel-head">
+        <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>Enroll Your Camper — All Camps</h2>
+        <span class="badge badge-orange">4 steps · ~2 min</span>
       </div>
-      <hr class="divider" style="margin-block:26px">
-      <form id="enrollForm" class="grid cols-3" style="align-items:end">
-        <div class="form-field" style="margin-bottom:0">
-          <label for="enrollChild">Camper</label>
-          <select id="enrollChild" class="form-control">
-            <option value="">Select child…</option>
-            <option value="maya">Maya Thompson · 9 yrs</option>
-            <option value="leo">Leo Thompson · 12 yrs</option>
+
+      <!-- Progress -->
+      <div class="enroll-progress-wrap" aria-hidden="true">
+        <div class="enroll-progress-track"><div class="enroll-progress-fill" id="enrollProgressFill" style="width:25%"></div></div>
+        <div class="enroll-stepper" role="tablist" aria-label="Enrollment steps">
+          <button type="button" class="stepper-step active" data-stepper="1" aria-selected="true"><span class="stepper-num">1</span><span class="stepper-label">Camper</span></button>
+          <span class="stepper-line"></span>
+          <button type="button" class="stepper-step" data-stepper="2"><span class="stepper-num">2</span><span class="stepper-label">Camp &amp; Week</span></button>
+          <span class="stepper-line"></span>
+          <button type="button" class="stepper-step" data-stepper="3"><span class="stepper-num">3</span><span class="stepper-label">Confirm</span></button>
+          <span class="stepper-line"></span>
+          <button type="button" class="stepper-step" data-stepper="4"><span class="stepper-num">4</span><span class="stepper-label">Payment</span></button>
+        </div>
+      </div>
+
+      <!-- Step 1: Camper -->
+      <div class="enroll-step active" data-enroll-step="1" role="tabpanel">
+        <h3 class="enroll-step-title">Step 1 — Choose camper</h3>
+        <p class="enroll-step-desc">Who is heading to camp? Select a profile or add a new camper.</p>
+        <div class="camper-picker" id="camperPicker" role="radiogroup" aria-label="Select camper">
+          <label class="camper-option" data-camper="maya">
+            <input type="radio" name="enrollCamper" value="maya" class="sr-only">
+            <img class="avatar" src="https://api.dicebear.com/7.x/adventurer/svg?seed=Maya%20Whitmore&backgroundColor=ffd5dc" alt="" width="54" height="54">
+            <div><strong>Maya Whitmore</strong><span>9 yrs · Trail Seekers</span><em class="badge badge-green" style="margin-top:6px">2 active weeks</em></div>
+            <span class="camper-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          </label>
+          <label class="camper-option" data-camper="leo">
+            <input type="radio" name="enrollCamper" value="leo" class="sr-only">
+            <img class="avatar" src="https://api.dicebear.com/7.x/adventurer/svg?seed=Leo%20Whitmore&backgroundColor=c0aede" alt="" width="54" height="54">
+            <div><strong>Leo Whitmore</strong><span>11 yrs · Summit Crew</span><em class="badge badge-blue" style="margin-top:6px">1 active week</em></div>
+            <span class="camper-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          </label>
+          <label class="camper-option" data-camper="new">
+            <input type="radio" name="enrollCamper" value="new" class="sr-only">
+            <span class="camper-add-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8m-8-4h16"/></svg></span>
+            <div><strong>Add new camper</strong><span>Enter name &amp; age below</span></div>
+            <span class="camper-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          </label>
+        </div>
+        <div id="newCamperFields" class="grid cols-2" style="display:none; margin-top:16px">
+          <div class="form-field" style="margin-bottom:0"><label for="newCamperName">New camper name <span class="req">*</span></label><input id="newCamperName" class="form-control" type="text" placeholder="e.g. Zoe"></div>
+          <div class="form-field" style="margin-bottom:0"><label for="newCamperAge">Age <span class="req">*</span></label><select id="newCamperAge" class="form-control"><option value="">Select age…</option><option>5 – 7</option><option>8 – 10</option><option>11 – 14</option></select></div>
+        </div>
+        <p class="field-error" id="step1Error" style="margin-top:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg><span></span></p>
+        <div class="enroll-actions">
+          <span></span>
+          <button type="button" class="btn btn-primary" data-enroll-next="1">Continue to camps <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+        </div>
+      </div>
+
+      <!-- Step 2: Camp & Week -->
+      <div class="enroll-step" data-enroll-step="2" role="tabpanel">
+        <h3 class="enroll-step-title">Step 2 — Pick camp &amp; week</h3>
+        <p class="enroll-step-desc">All 8 programs from our website — 4 signature + 4 specialty studios.</p>
+        <div class="camp-picker" id="campPicker" role="radiogroup" aria-label="Select camp"></div>
+        <p class="field-error" id="step2CampError"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg><span></span></p>
+
+        <div class="form-field" style="margin-top:18px">
+          <label for="enrollWeek">Session / Week <span class="req">*</span></label>
+          <select id="enrollWeek" class="form-control">
+            <option value="">Select week…</option>
+            <option value="2026-06-15">Jun 15 — Session A · Weeks 1–2 (All camps) — Open</option>
+            <option value="2026-07-06">Jul 06 — Session B · Weeks 3–4 (Robot Wars + Aqua) — Filling</option>
+            <option value="2026-07-20">Jul 20 — Week 5 Overnight · Nature Summit Trek — Filling</option>
+            <option value="2026-08-03">Aug 03 — Session C · Weeks 6–7 (Clay & Canvas, Stagecraft) — Open</option>
+            <option value="2026-08-17">Aug 17 — Week 8 Grand Finale · Championship Friday — Hot</option>
           </select>
         </div>
-        <div class="form-field" style="margin-bottom:0">
-          <label for="enrollCamp">Camp &amp; session</label>
-          <select id="enrollCamp" class="form-control">
-            <option value="">Select camp…</option>
-            <option value="sports">Sports Academy · Week 5 (Aug 3)</option>
-            <option value="nature">Nature Explorers · Week 6 (Aug 10)</option>
-            <option value="clay">Clay &amp; Canvas Studio · Week 7 (Aug 17)</option>
-            <option value="stage">Stagecraft Squad · Week 7 (Aug 17)</option>
-          </select>
+        <p class="field-error" id="step2WeekError"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg><span></span></p>
+
+        <div id="enrollPricePreview" class="enroll-price-preview"></div>
+
+        <div class="enroll-actions">
+          <button type="button" class="btn btn-ghost" data-enroll-prev="2">Back</button>
+          <button type="button" class="btn btn-primary" data-enroll-next="2">Review details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
         </div>
-        <button type="submit" class="btn btn-primary">Request Enrollment<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
-      </form>
+      </div>
+
+      <!-- Step 3: Confirm -->
+      <div class="enroll-step" data-enroll-step="3" role="tabpanel">
+        <h3 class="enroll-step-title">Step 3 — Confirm details</h3>
+        <div id="enrollSummary" class="enroll-summary"></div>
+        <div class="form-field">
+          <label for="enrollHealth">Health notes / allergies (prefilled from profile)</label>
+          <textarea id="enrollHealth" class="form-control" rows="3" placeholder="E.g. Nut allergy — EpiPen in wellness lodge, no scheduled meds"></textarea>
+        </div>
+        <div class="form-field">
+          <label for="enrollContact">Emergency contact</label>
+          <input id="enrollContact" class="form-control" type="text" value="Sarah Whitmore · +1 (555) 010-2288">
+        </div>
+        <label class="form-check" style="margin-top:10px">
+          <input type="checkbox" id="enrollTerms" required>
+          <span>I agree to the <a href="terms.html" style="color:var(--brand)">Terms</a> and <a href="privacy.html" style="color:var(--brand)">Privacy Policy</a>, and confirm health info is accurate.</span>
+        </label>
+        <p class="field-error" id="step3Error"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg><span></span></p>
+        <div class="enroll-actions">
+          <button type="button" class="btn btn-ghost" data-enroll-prev="3">Back</button>
+          <button type="button" class="btn btn-primary" data-enroll-next="3">Proceed to payment <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+        </div>
+      </div>
+
+      <!-- Step 4: Payment -->
+      <div class="enroll-step" data-enroll-step="4" role="tabpanel">
+        <h3 class="enroll-step-title">Step 4 — Pay $50 deposit to reserve</h3>
+        <p class="enroll-step-desc">Balance due Jun 30 · Free date change until 14 days before camp.</p>
+        <div id="enrollPaymentSummary" class="enroll-payment-summary"></div>
+        <form id="enrollPaymentForm" novalidate style="margin-top:18px">
+          <div class="grid cols-2">
+            <div class="form-field"><label for="payName">Cardholder name <span class="req">*</span></label><input id="payName" class="form-control" type="text" placeholder="Sarah Whitmore" required autocomplete="cc-name"></div>
+            <div class="form-field"><label for="payEmail">Receipt email <span class="req">*</span></label><input id="payEmail" class="form-control" type="email" placeholder="sarah@email.com" required autocomplete="email"></div>
+          </div>
+          <div class="form-field"><label for="payCard">Card number <span class="req">*</span></label><div class="input-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><input id="payCard" class="form-control" type="text" inputmode="numeric" placeholder="4242 4242 4242 4242" required autocomplete="cc-number" maxlength="19"></div></div>
+          <div class="grid cols-2">
+            <div class="form-field"><label for="payExp">Expiry <span class="req">*</span></label><input id="payExp" class="form-control" type="text" inputmode="numeric" placeholder="MM / YY" required autocomplete="cc-exp" maxlength="7"></div>
+            <div class="form-field"><label for="payCvv">CVV <span class="req">*</span></label><input id="payCvv" class="form-control" type="text" inputmode="numeric" placeholder="123" required autocomplete="cc-csc" maxlength="4"></div>
+          </div>
+          <p class="field-error" id="step4Error"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg><span></span></p>
+          <div class="enroll-actions" style="margin-top:20px">
+            <button type="button" class="btn btn-ghost" data-enroll-prev="4">Back</button>
+            <button type="submit" class="btn btn-primary btn-lg">Pay $50 &amp; Complete Enrollment <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Success -->
+      <div class="enroll-step" data-enroll-step="success" role="tabpanel" style="text-align:center; padding-block:18px">
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;margin:0 auto 16px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="width:32px;height:32px"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3 style="font-size:1.45rem">Enrollment confirmed!</h3>
+        <p id="enrollSuccessText" style="color:var(--muted);font-weight:600;margin:10px auto 18px;max-width:44ch"></p>
+        <div id="enrollSuccessDetails" class="enroll-success-details"></div>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px">
+          <button type="button" class="btn btn-primary" data-enroll-view-camps>View in Activity Camps</button>
+          <button type="button" class="btn btn-ghost" data-enroll-again>Enroll another camper</button>
+        </div>
+      </div>
     </div>
+
     <div class="panel">
       <div class="panel-head"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg>Good To Know</h2></div>
       <ul class="check-list cols-2" style="gap:12px 28px">
