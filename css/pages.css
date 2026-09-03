@@ -2,8 +2,9 @@
 @media (max-width:1024px){.dash-shell{grid-template-columns:1fr}}
 .dash-sidebar{
   background:var(--surface);border-inline-end:1px solid var(--line);
-  padding:22px 18px;display:flex;flex-direction:column;gap:6px;
+  padding:22px 18px 40px;display:flex;flex-direction:column;gap:6px;
   position:sticky;top:0;height:100vh;overflow-y:auto;z-index:900;
+  scrollbar-width:thin;scrollbar-color:var(--line) transparent;
 }
 @media (max-width:1024px){
   .dash-sidebar{
@@ -18,16 +19,18 @@
 @media (max-width:1024px){.dash-close{display:grid}}
 .dash-user{
   display:flex;gap:13px;align-items:center;background:var(--surface-2);
-  border-radius:var(--radius-md);padding:14px;margin-bottom:20px;
+  border-radius:var(--radius-md);padding:14px;margin-bottom:16px;
 }
 .dash-user img{width:48px;height:48px}
 .dash-user strong{display:block;font-family:var(--font-display);font-size:.98rem;line-height:1.25}
 .dash-user span{font-size:.8rem;color:var(--muted);font-weight:700}
-.dash-nav-label{font-size:.72rem;font-weight:800;letter-spacing:1.7px;text-transform:uppercase;color:var(--muted);margin:14px 10px 8px}
+.dash-nav{display:flex;flex-direction:column;gap:3px}
+.dash-nav-label{font-size:.72rem;font-weight:800;letter-spacing:1.7px;text-transform:uppercase;color:var(--muted);margin:14px 10px 6px}
 .dash-nav button,.dash-nav a{
-  display:flex;align-items:center;gap:12px;width:100%;padding:12px 14px;border-radius:13px;
-  font-weight:700;font-size:.95rem;color:var(--ink-2);text-align:start;
-  transition:background-color .25s,color .25s,transform .25s;
+  display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;border-radius:12px;
+  font-weight:700;font-size:.93rem;color:var(--ink-2);text-align:start;
+  text-decoration:none;border:none;background:transparent;cursor:pointer;
+  transition:background-color .22s,color .22s,transform .22s;box-sizing:border-box;
 }
 .dash-nav button:hover,.dash-nav a:hover{background:var(--brand-soft);color:var(--brand)}
 .dash-nav button.active{background:linear-gradient(135deg,var(--brand),#12925B);color:#fff;box-shadow:0 8px 18px -8px rgba(14,122,74,.6)}
@@ -37,14 +40,44 @@
   color:#fff;border-radius:999px;padding:2px 9px;
 }
 .dash-nav button.active .nav-count{background:rgba(255,255,255,.25)}
+.dash-nav-logout{
+  color:#e03131!important;margin-top:6px;
+  border:1px dashed rgba(224,49,49,.25)!important;
+  background:rgba(224,49,49,.04)!important;
+}
+.dash-nav-logout:hover{
+  background:rgba(224,49,49,.12)!important;
+  color:#c92a2a!important;
+  border-color:rgba(224,49,49,.45)!important;
+  transform:translateX(3px);
+}
+[dir="rtl"] .dash-nav-logout:hover{transform:translateX(-3px)}
+.dash-nav-logout svg{color:#e03131!important}
 .dash-upgrade{
-  margin-top:auto;background:linear-gradient(140deg,var(--brand-strong),var(--brand));
-  border-radius:var(--radius-md);padding:18px;color:#fff;margin-top:22px;position:relative;overflow:hidden;
+  margin-top:16px;margin-bottom:12px;flex-shrink:0;
+  background:linear-gradient(140deg,var(--brand-strong),var(--brand));
+  border-radius:var(--radius-md);padding:16px 18px;color:#fff;position:relative;overflow:hidden;
 }
 .dash-upgrade::after{content:"";position:absolute;top:-30px;inset-inline-end:-30px;width:90px;height:90px;border-radius:50%;background:rgba(255,201,60,.3)}
 .dash-upgrade strong{font-family:var(--font-display);display:block;margin-bottom:5px}
 .dash-upgrade strong .inline-ico{color:var(--sun)}
 .dash-upgrade p{font-size:.82rem;opacity:.85;margin-bottom:12px}
+.today-campers-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-block:14px 16px}
+@media (max-width:768px){.today-campers-grid{grid-template-columns:1fr}}
+.camper-status-card{
+  background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius-md);
+  padding:16px;display:flex;flex-direction:column;gap:12px;
+  transition:transform .25s var(--ease-out),box-shadow .25s;
+}
+.camper-status-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm)}
+.camper-status-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.camper-status-head strong{display:block;font-family:var(--font-display);font-size:.96rem;line-height:1.25}
+.camper-status-head span{font-size:.8rem;color:var(--muted);font-weight:700}
+.camper-status-body{display:flex;flex-direction:column;gap:7px;font-size:.84rem;padding-top:10px;border-top:1px dashed var(--line)}
+.camper-status-body .status-item{display:flex;align-items:center;gap:8px;color:var(--ink-2)}
+.camper-status-body .status-item svg{width:15px;height:15px;color:var(--brand);flex:none}
+.camper-status-body .status-item strong{font-weight:800;color:var(--ink)}
+.camper-quick-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding-top:4px}
 .dash-main{padding:clamp(20px,3vw,36px);min-width:0;display:flex;flex-direction:column;gap:clamp(20px,3vw,30px)}
 .dash-topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .dash-topbar h1{font-size:clamp(1.4rem,2.6vw,1.9rem)}
